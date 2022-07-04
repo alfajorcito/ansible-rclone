@@ -18,6 +18,8 @@ jobs:
   lint:
     runs-on: ubuntu-20.04
     steps:
+      - name: work around permission issue
+        run: git config --global --add safe.directory /github/workspace/stefangweichinger/ansible-rclone
       - name: checkout
         uses: actions/checkout@v2
         with:
@@ -51,8 +53,6 @@ jobs:
           - "1.56.0"
           - ""
     steps:
-      - name: work around permission issue
-        run: git config --global --add safe.directory /github/workspace/stefangweichinger/ansible-rclone
       - name: checkout
         uses: actions/checkout@v2
         with:
